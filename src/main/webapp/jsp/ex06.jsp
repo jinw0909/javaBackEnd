@@ -20,7 +20,7 @@
 	out.println(format.format(today.getTime()) + "<br>");
 	
 	// 어제 날짜 출력
-	today.add(Calendar.DATE, -100);
+	today.add(Calendar.DATE, -1);
 	
 	out.println(format.format(today.getTime()) + "<br>");
 	
