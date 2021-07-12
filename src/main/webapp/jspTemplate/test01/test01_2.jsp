@@ -61,19 +61,8 @@
 %>
 
 <div id="wrap">
-		<header>
-			<h1>SK Broadband IPTV</h1>
-		</header>
-		<nav>
-			<ul class="nav bg-danger text-white w-100">
-				<li class="nav-item"><a href="/jspTemplate/test01_1.jsp" class="nav-link text-white">전체</a></li>
-				<li class="nav-item"><a href="/jspTemplate/test01_2.jsp?category=지상파" class="nav-link text-white">지상파</a></li>
-				<li class="nav-item"><a href="/jspTemplate/test01_2.jsp?category=드라마" class="nav-link text-white">드라마</a></li>
-				<li class="nav-item"><a href="/jspTemplate/test01_2.jsp?category=예능" class="nav-link text-white">예능</a></li>
-				<li class="nav-item"><a href="/jspTemplate/test01_2.jsp?category=영화" class="nav-link text-white">영화</a></li>
-				<li class="nav-item"><a href="/jspTemplate/test01_2.jsp?category=스포츠" class="nav-link text-white">스포츠</a></li>
-			</ul>
-		</nav>
+		<jsp:include page="header.jsp" />
+		<jsp:include page="menu.jsp" />
 		<section>
 			<table class="table">
 				<thead>
@@ -84,22 +73,32 @@
 					</tr>
 				</thead>
 				<tbody>
-				<% for (Map<String, String> data : list) { 
-					if (category.equals(data.get("category"))) { %>
-					<tr>
-						<td><%=data.get("ch") %></td>
-						<td><%=data.get("name") %></td>
-						<td><%=data.get("category") %></td>
-						<td></td>
-					</tr>
+				<% for (Map<String, String> data : list) {
+					try { 
+						if (category.equals(data.get("category"))) { %>
+								<tr>
+									<td><%=data.get("ch") %></td>
+									<td><%=data.get("name") %></td>
+									<td><%=data.get("category") %></td>
+									<td></td>
+								</tr>
+							
+							
+							<% } %>
+					<% } catch (NullPointerException e) { %>
+						<tr>
+							<td><%=data.get("ch") %></td>
+							<td><%=data.get("name") %></td>
+							<td><%=data.get("category") %></td>
+							<td></td>
+						</tr>
 					<% } %>
+						
 				<% } %>
 				</tbody>
 			</table>
 		</section>
-		<footer class="text-center">
-			Copyright 2016. 이름 All Pictures Cannot Be Copied Without Permission.
-		</footer>
+		<jsp:include page="footer.jsp"/>
 	</div>
 </body>
 </html>
