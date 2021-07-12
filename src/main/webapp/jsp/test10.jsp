@@ -52,6 +52,7 @@
 			<tr>
 				<% for (int j = 1; j <= 7; j++) { %>
 				<td class="display-4"><%=day%></td>
+				<span>일</span>
 				
 				<% if (day == lastday) {
 					break;
