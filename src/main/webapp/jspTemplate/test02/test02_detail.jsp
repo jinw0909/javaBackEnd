@@ -20,59 +20,44 @@
 </style>
 </head>
 <body>
+	
 	<div class="container">
-		<header class="d-flex">
-			<div class="logo col-2 d-flex justify-content-center align-items-center text-success">
-				<h1>Melong</h1>
-			</div>
-			<div class="search col-10 d-flex align-items-center p-5">
-				<form>
-					<div class="input-group">
-						<input type="text" class="form-control col-9">
-						<div class="input-group-append">
-							<button type="submit" class="button bg-info form-control col-3 text-white">검색</button>
-						</div>
-					</div>
-				</form>
-			</div>
-		</header>
-		<nav>
-			<ul class="nav">
-				<li class="nav-item"><a href="#" class="nav-link text-dark">멜롱챠트</a></li>
-				<li class="nav-item"><a href="#" class="nav-link text-dark">최신음악</a></li>
-				<li class="nav-item"><a href="#" class="nav-link text-dark">장르음악</a></li>
-				<li class="nav-item"><a href="#" class="nav-link text-dark">멜롱DJ</a></li>
-				<li class="nav-item"><a href="#" class="nav-link text-dark">뮤직어워드</a></li>
-			</ul>
-		</nav>
+		<jsp:include page="header.jsp" />
+		<jsp:include page="menu.jsp" />
+		<%@ include file="data.jsp" %>
+		<% int id = Integer.parseInt(request.getParameter("id")); %>
 		<section>
 			<h3>곡 정보</h3>
 			<article class="d-flex border border-success">
+			<% for (Map<String, Object>music : musicList) { 
+			 if ((int)music.get("id") == id) { %>
 				<div class="profile-img col-3 p-3">
-					<img src="http://image.genie.co.kr/Y/IMAGE/IMG_ALBUM/081/867/444/81867444_1616662460652_1_600x600.JPG" />	
+					<img src="<%=music.get("thumbnail")%>" />	
 				</div>
 				<div class="profile-desc col-9 p-3">
-					<h5 class="display-3 m-0">삐삐</h5>
-					<p class="display-8 text-success m-0">아이유</p>
+					<h5 class="display-3 m-0"><%=music.get("title")%></h5>
+					<p class="display-8 text-success m-0"><%=music.get("singer")%></p>
 					<table>
 						<tr>
 							<td>앨범</td>
-							<td>삐삐</td>
+							<td><%=music.get("album")%></td>
 						</tr>
 						<tr>
 							<td>재생시간</td>
-							<td>3 :14</td>
+							<td><%=(int)music.get("time") / 60 %> : <%=(int)music.get("time") % 60 %></td>
 						</tr>
 						<tr>
 							<td>작곡가</td>
-							<td>이종훈</td>
+							<td><%=music.get("composer")%></td>
 						</tr>
 						<tr>
 							<td>작사가</td>
-							<td>아이유</td>
+							<td><%=music.get("lyricist")%></td>
 						</tr>
 					</table>
 				</div>
+			 <% }
+			} %>
 			</article>
 			<article>
 				<h3 class="mt-3">가사</h3>
@@ -81,9 +66,7 @@
 				<hr/>
 			</article>
 		</section>
-		<footer> 
-			<small>copyright 2021. melong All Rights Reserved</small>
-		</footer>
+		<jsp:include page="footer.jsp" />
 	</div>
 </body>
 </html>
