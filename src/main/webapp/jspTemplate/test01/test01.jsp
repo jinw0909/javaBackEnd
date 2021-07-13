@@ -74,8 +74,9 @@
 				</thead>
 				<tbody>
 				<% for (Map<String, String> data : list) {
-					try { 
-						if (category.equals(data.get("category"))) { %>
+						// targetCategory 가 null일 때 무조건 참이 되도록
+						
+						if (category == null || category.equals(data.get("category"))) { %>
 								<tr>
 									<td><%=data.get("ch") %></td>
 									<td><%=data.get("name") %></td>
@@ -85,14 +86,7 @@
 							
 							
 							<% } %>
-					<% } catch (NullPointerException e) { %>
-						<tr>
-							<td><%=data.get("ch") %></td>
-							<td><%=data.get("name") %></td>
-							<td><%=data.get("category") %></td>
-							<td></td>
-						</tr>
-					<% } %>
+					
 						
 				<% } %>
 				</tbody>
