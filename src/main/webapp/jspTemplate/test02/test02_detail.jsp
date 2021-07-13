@@ -25,12 +25,18 @@
 		<jsp:include page="header.jsp" />
 		<jsp:include page="menu.jsp" />
 		<%@ include file="data.jsp" %>
-		<% int id = Integer.parseInt(request.getParameter("id")); %>
+		<% int id;
+		   try {
+			   id = Integer.parseInt(request.getParameter("id")); 
+		   } catch (NumberFormatException e) {
+			   id = 0;
+		   }
+		   String title = request.getParameter("title"); %>
 		<section>
 			<h3>곡 정보</h3>
 			<article class="d-flex border border-success">
 			<% for (Map<String, Object>music : musicList) { 
-			 if ((int)music.get("id") == id) { %>
+			 if ((int)music.get("id") == id || music.get("title").equals(title)) { %>
 				<div class="profile-img col-3 p-3">
 					<img src="<%=music.get("thumbnail")%>" />	
 				</div>

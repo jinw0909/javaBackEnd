@@ -24,7 +24,7 @@
 	
 
 	<div class="container">
-		<jsp:include page="header.jsp" />
+		<jsp:include page="header.jsp"/>
 		<jsp:include page="menu.jsp" />
 		<%@ include file="data.jsp" %>
 		<section>	
