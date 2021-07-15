@@ -2,17 +2,15 @@ package com.jinw0909.common;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
-import com.mysql.cj.protocol.Resultset;
 
 public class MySqlService {
 	private String url;
 	private String id;
 	private String password;
 	private static MySqlService mysqlService = null;
-	
 	// 접속 관리 객체
 	private Connection conn;
 	private Statement statement;
@@ -27,7 +25,7 @@ public class MySqlService {
 	
 	
 	public MySqlService() {
-		this.url = "jdbc:mysql://localhost:3306/JAVA";
+		this.url = "jdbc:mysql://localhost:3306/java";
 		this.id = "root";
 		this.password = "worldcup1989";
 	}
@@ -60,8 +58,8 @@ public class MySqlService {
 			return this.statement.executeUpdate(query);
 		}
 		
-		public Resultset select(String query) throws SQLException {
-			return (Resultset) this.statement.executeQuery(query);
+		public ResultSet select(String query) throws SQLException {
+			return (ResultSet) this.statement.executeQuery(query);
 		}
 		
 		public void disconnect() throws SQLException {
