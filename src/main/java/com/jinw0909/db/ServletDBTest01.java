@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.jinw0909.common.MySqlService;
+import com.jinw0909.common.MysqlService;
 
 @WebServlet("/db/test01")
 public class ServletDBTest01 extends HttpServlet {
@@ -21,7 +21,7 @@ public class ServletDBTest01 extends HttpServlet {
 		
 		PrintWriter out = response.getWriter();
 		
-		MySqlService mysqlService = MySqlService.getInstance();
+		MysqlService mysqlService = MysqlService.getInstance();
 		mysqlService.connection();
 		
 		String insertQuery = "INSERT INTO `real_estate`\n"
