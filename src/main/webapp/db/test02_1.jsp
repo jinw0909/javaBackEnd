@@ -13,10 +13,10 @@
 <body>
 	<div class="container">
 		<h2 class="mt-3">즐겨찾기 추가</h2>
-		<form method="get" action="/db/test02_insert">
+		<form method="post" action="/db/test02_insert">
 			<label>사이트명:<input type="text" name="name" class="form-control mb-3"></label>
 			<br>
-			<label>사이트주소:<input type="text" name="url" class="form-control col-6 mb-3"></label>
+			<label class="w-50">사이트주소:<input type="text" name="url" class="form-control col-6 mb-3"></label>
 			<br>
 			<input type="submit" class="btn btn-success" value="추가">
 		</form>

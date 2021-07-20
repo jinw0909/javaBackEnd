@@ -14,7 +14,7 @@ import com.jinw0909.common.MysqlService;
 public class ServletTest02Insert extends HttpServlet {
 	
 	@Override
-	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		response.setContentType("text/plain");
 		response.setCharacterEncoding("utf-8");
 		
